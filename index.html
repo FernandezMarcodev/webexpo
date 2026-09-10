@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPO-UNO 2026 | Universidad Nacional del Oeste</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
+
+        :root {
+            --uno-gray-nav: #5b5b5b;
+            --uno-teal: #269FAC;
+            --uno-celeste: #0099d2;
+            --uno-magenta: #D62B5B;
+            --uno-bg-light: #EDEDED;
+            --uno-text: #454545;
+            --uno-text-dark: #333;
+            --uno-white: #FFFFFF;
+            --uno-border: #e0e0e0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, 'Arial Unicode MS', Helvetica, sans-serif;
+            color: var(--uno-text);
+            background: var(--uno-white);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* ===================== HEADER ===================== */
+        .header-white {
+            background: var(--uno-white);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 58px 20px 54px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-logo img {
+            height: 76px;
+            width: auto;
+        }
+
+        .header-expo-title {
+            border-left: 3px solid var(--uno-border);
+            padding-left: 24px;
+        }
+
+        .header-expo-title h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--uno-text-dark);
+            line-height: 1.2;
+        }
+
+        .header-expo-title p {
+            font-size: 0.8rem;
+            color: var(--uno-teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .header-social {
+            display: flex;
+            gap: 6px;
+        }
+
+        .header-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .header-social a:hover {
+            opacity: 1;
+        }
+
+        .header-social a img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* NAV BAR */
+        .header-nav {
+            background: var(--uno-gray-nav);
+        }
+
+        .header-nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .header-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .header-nav-links li a {
+            display: block;
+            color: var(--uno-white);
+            text-decoration: none;
+            font-family: Arial, 'Arial Unicode MS', Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: normal;
+            text-transform: uppercase;
+            padding: 3px 16px;
+            height: 40px;
+            line-height: 35px;
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .header-nav-links li a:hover,
+        .header-nav-links li a.active {
+            border-bottom-color: var(--uno-white);
+            color: var(--uno-white);
+        }
+
+        .header-nav-right {
+            margin-left: auto;
+            color: var(--uno-white);
+            font-family: Arial, 'Arial Unicode MS', Helvetica, sans-serif;
+            font-size: 13px;
+            padding-right: 4px;
+        }
+
+        /* MAGENTA BAR */
+        .header-magenta {
+            height: 5px;
+            background: var(--uno-magenta);
+        }
+
+        /* SUB NAV (CELESTE) */
+        .header-subnav {
+            background: var(--uno-teal);
+        }
+
+        .header-subnav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .header-subnav-title {
+            color: var(--uno-white);
+            font-family: Arial, 'Arial Unicode MS', Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            height: 40px;
+            line-height: 35px;
+            padding: 3px 18px 3px 16px;
+            border-right: 1px solid rgba(255,255,255,0.3);
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .header-subnav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .header-subnav-links li a {
+            display: block;
+            color: rgba(255,255,255,0.92);
+            text-decoration: none;
+            font-family: Arial, 'Arial Unicode MS', Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: normal;
+            text-transform: uppercase;
+            padding: 3px 14px;
+            height: 40px;
+            line-height: 35px;
+            border-bottom: 4px solid transparent;
+            transition: color 0.35s ease-in-out, border-color 0.35s ease-in-out, background 0.35s ease-in-out, transform 0.35s ease-in-out;
+            white-space: nowrap;
+            border-radius: 2px;
+        }
+
+        .header-subnav-links li a:hover {
+            color: var(--uno-white);
+            border-bottom-color: var(--uno-white);
+            background: rgba(255,255,255,0.14);
+        }
+
+        /* HEADER RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-white {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+                padding: 34px 16px 30px;
+            }
+
+            .header-logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .header-expo-title {
+                border-left: none;
+                border-top: 2px solid var(--uno-border);
+                padding-left: 0;
+                padding-top: 12px;
+            }
+
+            .header-right {
+                align-items: center;
+            }
+
+            .header-nav-inner {
+                overflow-x: auto;
+            }
+
+            .header-nav-links li a {
+                font-size: 12px;
+                height: 38px;
+                line-height: 33px;
+                padding: 3px 10px;
+            }
+
+            .header-nav-right {
+                display: none;
+            }
+
+            .header-subnav-inner {
+                overflow-x: auto;
+            }
+
+            .header-subnav-title {
+                font-size: 12px;
+                height: 38px;
+                line-height: 33px;
+                padding: 3px 12px 3px 10px;
+            }
+
+            .header-subnav-links li a {
+                font-size: 12px;
+                height: 38px;
+                line-height: 33px;
+                padding: 3px 8px;
+            }
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            background: linear-gradient(135deg, var(--uno-celeste) 0%, var(--uno-teal) 100%);
+            color: var(--uno-white);
+            padding: 70px 24px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: var(--uno-white);
+            padding: 6px 20px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===================== SECTION ===================== */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-header h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--uno-teal);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--uno-text);
+            font-size: 0.95rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .section-line {
+            width: 50px;
+            height: 3px;
+            background: var(--uno-magenta);
+            margin: 16px auto 0;
+        }
+
+        /* ===================== PROJECTS ===================== */
+        .projects {
+            background: var(--uno-bg-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--uno-white);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--uno-border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: var(--uno-white);
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.4s ease;
+        }
+
+        #pastillero-nono .project-image img {
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            color: var(--uno-text);
+            font-size: 0.85rem;
+            background: #d9d9d9;
+        }
+
+        .project-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.35;
+        }
+
+        .project-body {
+            padding: 20px;
+        }
+
+        .project-body h4 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--uno-teal);
+            margin-bottom: 8px;
+        }
+
+        .project-body p {
+            color: var(--uno-text);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .project-btn {
+            display: inline-block;
+            background: var(--uno-magenta);
+            color: var(--uno-white);
+            text-decoration: none;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        .project-btn:hover {
+            background: #b81e4a;
+        }
+
+        .project-btn-figma {
+            background: var(--uno-teal);
+        }
+
+        .project-btn-figma:hover {
+            background: #1d8490;
+        }
+
+        /* ===================== TEAM ===================== */
+        .team {
+            background: var(--uno-white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 28px 16px;
+            background: var(--uno-white);
+            border-radius: 4px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--uno-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--uno-teal);
+            color: var(--uno-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+            border: 3px solid var(--uno-teal);
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-avatar-fallback {
+            color: var(--uno-white);
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .team-card h5 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--uno-text-dark);
+            margin-bottom: 4px;
+        }
+
+        .team-card span {
+            font-size: 0.78rem;
+            color: var(--uno-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background: var(--uno-teal);
+            color: var(--uno-white);
+        }
+
+        .footer-main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 25px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .footer-brand img {
+            height: 44px;
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            font-size: 0.83rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        .footer-col h6 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+            color: var(--uno-white);
+        }
+
+        .footer-col p, .footer-col a {
+            font-size: 0.83rem;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--uno-white);
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .footer-social a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.3);
+            text-decoration: none;
+        }
+
+        .footer-social a svg {
+            width: 15px;
+            height: 15px;
+            fill: var(--uno-white);
+        }
+
+        .footer-bottom {
+            background: var(--uno-celeste);
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 0.8rem;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .header-links {
+                display: none;
+            }
+
+            .header-brand-text h1 {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .team-card {
+                padding: 20px 10px;
+            }
+
+            .hero {
+                padding: 45px 16px 35px;
+            }
+
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <nav class="header-nav">
+        <div class="header-nav-inner">
+            <ul class="header-nav-links">
+                <li><a href="https://www.uno.edu.ar/extension/expo-uno.html" target="_blank">EXPO-UNO Oficial</a></li>
+                <li><a href="https://www.uno.edu.ar/" target="_blank">Sitio UNO</a></li>
+                <li><a href="https://www.uno.edu.ar/institucional/sedes.html" target="_blank">Sedes</a></li>
+                <li><a href="https://www.uno.edu.ar/estudiantes-uno/departamento-de-alumnos.html" target="_blank">Departamento de Alumnos</a></li>
+            </ul>
+            <span class="header-nav-right">Universidad Nacional del Oeste</span>
+        </div>
+    </nav>
+
+    <div class="header-subnav">
+        <div class="header-subnav-inner">
+            <span class="header-subnav-title">Accesos</span>
+            <ul class="header-subnav-links">
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header-white">
+        <div class="header-logo">
+            <a href="https://www.uno.edu.ar/" target="_blank">
+                <img src="https://www.uno.edu.ar/images/template2/home/header/UNO-logo-web.png" alt="Logo Universidad Nacional del Oeste">
+            </a>
+            <div class="header-expo-title">
+                <h1>EXPO-UNO 2026</h1>
+                <p>Universidad Nacional del Oeste</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-social">
+                <a href="https://www.facebook.com/UNdelOeste" target="_blank" aria-label="Facebook">
+                    <img src="https://www.uno.edu.ar/images/social/icono_social_fb.png" alt="Facebook">
+                </a>
+                <a href="https://www.twitter.com/UNdelOeste" target="_blank" aria-label="Twitter">
+                    <img src="https://www.uno.edu.ar/images/social/icono_social_tw.png" alt="Twitter">
+                </a>
+                <a href="https://www.instagram.com/undeloeste" target="_blank" aria-label="Instagram">
+                    <img src="https://www.uno.edu.ar/images/social/icono_social_ig.png" alt="Instagram">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-magenta"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Exhibición de Proyectos 2026</div>
+            <h2>Proyectos Estudiantiles</h2>
+            <p>Presentamos los proyectos desarrollados por estudiantes de la Universidad Nacional del Oeste en el marco de la EXPO-UNO 2026.</p>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="projects" id="proyectos">
+        <div class="section">
+            <div class="section-header">
+                <h3>Nuestros Proyectos</h3>
+                <p>Soluciones creadas por estudiantes de la UNO que abordan problemáticas reales con tecnología e innovación.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+
+                <!-- ConciertoFinder -->
+                <div class="project-card" id="concierto-finder">
+                    <div class="project-image">
+                        <img src="img/ConciertoFinder.png" alt="ConciertoFinder" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-image-placeholder" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934a2.25 2.25 0 01-1.636 0L5.503 6.433A1.125 1.125 0 005 7.432V9.75c0 .836.88 1.38 1.628 1.006l3.869-1.934a2.25 2.25 0 011.636 0z"/></svg>
+                            <span>Subí tu foto: ConciertoFinder.png</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h4>ConciertoFinder</h4>
+                        <p>Plataforma de geolocalización que permite a los usuarios descubrir conciertos cercanos a su ubicación actual. Los eventos se guardan en una base de datos y se renderizan sobre un mapa interactivo estilo Google Maps.</p>
+                        <a href="https://expouno.onrender.com/" target="_blank" class="project-btn">Visitar proyecto</a>
+                    </div>
+                </div>
+
+                <!-- Cyber Coach -->
+                <div class="project-card" id="cyber-coach">
+                    <div class="project-image">
+                        <img src="img/CyberCoach.png" alt="Cyber Coach" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-image-placeholder" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                            <span>Subí tu foto: CyberCoach.png</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h4>Cyber Coach</h4>
+                        <p>Sitio web con información actualizada y respaldada científicamente sobre dietas, rutinas de entrenamiento y gym. Incluye la posibilidad de reservar turnos con profesionales para planes personalizados, integrando la API de Calendly para videollamadas por Meet.</p>
+                        <a href="https://cyber-coach-expouno.onrender.com/" target="_blank" class="project-btn">Visitar proyecto</a>
+                    </div>
+                </div>
+
+                <!-- Las Pastillas del Nono -->
+                <div class="project-card" id="pastillero-nono">
+                    <div class="project-image">
+                        <img src="img/PastilleroNono.png" alt="Las Pastillas del Nono" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-image-placeholder" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+                            <span>Subí tu foto: PastilleroNono.png</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h4>Las Pastillas del Nono</h4>
+                        <p>Prototipo de diseño UI/UX realizado en Figma para un pastillero semanal inteligente. Permite configurar recordatorios de medicación de forma individual o asistida, donde un cuidador puede programar las notificaciones que recibe el paciente.</p>
+                        <a href="https://www.figma.com/design/GB5Kj7RfTrquYNjDtBKCSN/APP-FINAL?node-id=0-1&p=f" target="_blank" class="project-btn project-btn-figma">Ver prototipo en Figma</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="team" id="equipo">
+        <div class="section">
+            <div class="section-header">
+                <h3>Equipo de Desarrollo</h3>
+                <p>Estudiantes de la Universidad Nacional del Oeste.</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/MarcoFernandez.jpeg" alt="Fernandez Marco" onerror="this.style.display='none'; this.insertAdjacentHTML('beforebegin', '<span class=team-avatar-fallback>MF</span>');">
+                    </div>
+                    <h5>Fernandez Marco</h5>
+                    <span>Desarrollador</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/FranciscoRoy.png" alt="Roy Francisco" onerror="this.style.display='none'; this.insertAdjacentHTML('beforebegin', '<span class=team-avatar-fallback>FR</span>');">
+                    </div>
+                    <h5>Roy Francisco</h5>
+                    <span>Desarrollador</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/FedericoLuna.png" alt="Luna Federico" onerror="this.style.display='none'; this.insertAdjacentHTML('beforebegin', '<span class=team-avatar-fallback>FL</span>');">
+                    </div>
+                    <h5>Luna Federico</h5>
+                    <span>Desarrollador</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="https://www.uno.edu.ar/images/web/Logo_Footer.jpg" alt="Logo UNO">
+                <p>Belgrano 369, San Antonio de Padua (CP1718)<br>Buenos Aires, República Argentina<br>(0220) 4834150</p>
+            </div>
+            <div class="footer-col">
+                <h6>Enlaces</h6>
+                <a href="https://www.uno.edu.ar/" target="_blank">Sitio oficial UNO</a>
+                <a href="https://www.uno.edu.ar/extension/expo-uno.html" target="_blank">EXPO-UNO 2026</a>
+                <a href="https://www.uno.edu.ar/institucional/sedes.html" target="_blank">Sedes</a>
+                <a href="https://www.uno.edu.ar/estudiantes-uno/departamento-de-alumnos.html" target="_blank">Departamento de Alumnos</a>
+            </div>
+            <div class="footer-col">
+                <h6>Redes Sociales</h6>
+                <p>Seguinos en nuestras redes</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/UNdelOeste" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/undeloeste/" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.twitter.com/UNdelOeste" target="_blank" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Universidad Nacional del Oeste &mdash; EXPO-UNO
+        </div>
+    </footer>
+
+</body>
+</html>
