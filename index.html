@@ -34,6 +34,7 @@
             background: var(--uno-white);
             line-height: 1.5;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* ===================== HEADER ===================== */
@@ -56,6 +57,7 @@
         .header-logo img {
             height: 76px;
             width: auto;
+            max-width: 100%;
         }
 
         .header-expo-title {
@@ -65,7 +67,7 @@
 
         .header-expo-title h1 {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
             font-weight: 700;
             color: var(--uno-text-dark);
             line-height: 1.2;
@@ -237,6 +239,11 @@
                 gap: 10px;
             }
 
+            .header-logo img {
+                height: auto;
+                max-width: 180px;
+            }
+
             .header-expo-title {
                 border-left: none;
                 border-top: 2px solid var(--uno-border);
@@ -248,15 +255,17 @@
                 align-items: center;
             }
 
-            .header-nav-inner {
-                overflow-x: auto;
+            .header-nav-links {
+                flex-wrap: wrap;
+                row-gap: 4px;
             }
 
             .header-nav-links li a {
                 font-size: 12px;
-                height: 38px;
-                line-height: 33px;
-                padding: 3px 10px;
+                height: auto;
+                line-height: normal;
+                padding: 11px 12px;
+                border-bottom-width: 3px;
             }
 
             .header-nav-right {
@@ -264,21 +273,30 @@
             }
 
             .header-subnav-inner {
-                overflow-x: auto;
+                flex-wrap: wrap;
             }
 
             .header-subnav-title {
                 font-size: 12px;
-                height: 38px;
-                line-height: 33px;
-                padding: 3px 12px 3px 10px;
+                height: auto;
+                line-height: normal;
+                padding: 10px 12px 10px 10px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.3);
+                margin-right: 0;
+            }
+
+            .header-subnav-links {
+                flex-wrap: wrap;
+                row-gap: 4px;
             }
 
             .header-subnav-links li a {
                 font-size: 12px;
-                height: 38px;
-                line-height: 33px;
-                padding: 3px 8px;
+                height: auto;
+                line-height: normal;
+                padding: 9px 8px;
+                border-bottom-width: 3px;
             }
         }
 
@@ -286,7 +304,7 @@
         .hero {
             background: linear-gradient(135deg, var(--uno-celeste) 0%, var(--uno-teal) 100%);
             color: var(--uno-white);
-            padding: 70px 24px 60px;
+            padding: clamp(45px, 8vw, 70px) 24px clamp(35px, 8vw, 60px);
             text-align: center;
             position: relative;
         }
@@ -313,10 +331,11 @@
 
         .hero h2 {
             font-family: 'Roboto', sans-serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 6vw, 2.8rem);
             font-weight: 900;
             margin-bottom: 16px;
             line-height: 1.15;
+            overflow-wrap: break-word;
         }
 
         .hero p {
@@ -331,7 +350,7 @@
         .section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: clamp(40px, 7vw, 60px) 20px;
         }
 
         .section-header {
@@ -341,7 +360,7 @@
 
         .section-header h3 {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4.5vw, 1.8rem);
             font-weight: 700;
             color: var(--uno-teal);
             margin-bottom: 12px;
@@ -368,7 +387,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
             gap: 24px;
         }
 
@@ -379,6 +398,8 @@
             box-shadow: var(--shadow-sm);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--uno-border);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -436,6 +457,9 @@
 
         .project-body {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .project-body h4 {
@@ -453,6 +477,46 @@
             margin-bottom: 16px;
         }
 
+        .project-tech {
+            margin: 0 0 18px;
+            padding-top: 14px;
+            border-top: 1px solid var(--uno-border);
+        }
+
+        .project-tech-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--uno-text);
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .project-tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tech-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--uno-bg-light);
+            border: 1px solid var(--uno-border);
+            border-radius: 3px;
+            padding: 5px 10px;
+            font-size: 0.78rem;
+            color: var(--uno-text-dark);
+        }
+
+        .project-tech-item img {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
         .project-btn {
             display: inline-block;
             background: var(--uno-magenta);
@@ -462,6 +526,8 @@
             font-size: 0.85rem;
             border-radius: 2px;
             transition: background 0.2s;
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         .project-btn:hover {
@@ -483,9 +549,9 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 750px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+            gap: 20px;
+            max-width: 780px;
             margin: 0 auto;
         }
 
@@ -567,6 +633,7 @@
 
         .footer-brand img {
             height: 44px;
+            max-width: 100%;
             margin-bottom: 14px;
         }
 
@@ -636,58 +703,50 @@
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 900px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-                margin: 0 auto;
+            .section {
+                padding: 50px 16px;
             }
 
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .project-image {
+                height: 200px;
             }
 
             .footer-main {
                 grid-template-columns: 1fr;
                 text-align: center;
+                justify-items: center;
+                gap: 26px;
             }
 
             .footer-social {
                 justify-content: center;
             }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .header-links {
-                display: none;
-            }
-
-            .header-brand-text h1 {
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 500px) {
-            .team-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+            .project-image {
+                height: 180px;
             }
 
             .team-card {
-                padding: 20px 10px;
+                padding: 22px 12px;
+            }
+
+            .team-card h5 {
+                font-size: 0.85rem;
             }
 
             .hero {
                 padding: 45px 16px 35px;
             }
 
-            .hero h2 {
-                font-size: 1.6rem;
-            }
-
             .hero p {
                 font-size: 0.9rem;
+            }
+
+            .header-subnav-links li a {
+                padding: 9px 7px;
+                font-size: 11px;
             }
         }
     </style>
@@ -775,6 +834,17 @@
                     <div class="project-body">
                         <h4>ConciertoFinder</h4>
                         <p>Plataforma de geolocalización que permite a los usuarios descubrir conciertos cercanos a su ubicación actual. Los eventos se guardan en una base de datos y se renderizan sobre un mapa interactivo estilo Google Maps.</p>
+                        <div class="project-tech">
+                            <div class="project-tech-label">Tecnologías utilizadas</div>
+                            <div class="project-tech-list">
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/react" alt="React" loading="lazy" onerror="this.style.display='none'">React</span>
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/leaflet" alt="Leaflet" loading="lazy" onerror="this.style.display='none'">Leaflet</span>
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/python" alt="Python" loading="lazy" onerror="this.style.display='none'">Python</span>
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/flask" alt="Flask" loading="lazy" onerror="this.style.display='none'">Flask</span>
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/postgresql" alt="PostgreSQL" loading="lazy" onerror="this.style.display='none'">PostgreSQL</span>
+                                <span class="project-tech-item"><img src="img/PostGIS.png" alt="PostGIS" onerror="this.style.display='none'">PostGIS</span>
+                            </div>
+                        </div>
                         <a href="https://expouno.onrender.com/" target="_blank" class="project-btn">Visitar proyecto</a>
                     </div>
                 </div>
@@ -791,6 +861,14 @@
                     <div class="project-body">
                         <h4>Cyber Coach</h4>
                         <p>Sitio web con información actualizada y respaldada científicamente sobre dietas, rutinas de entrenamiento y gym. Incluye la posibilidad de reservar turnos con profesionales para planes personalizados, integrando la API de Calendly para videollamadas por Meet.</p>
+                        <div class="project-tech">
+                            <div class="project-tech-label">Tecnologías utilizadas</div>
+                            <div class="project-tech-list">
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/django" alt="Django" loading="lazy" onerror="this.style.display='none'">Django</span>
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/postgresql" alt="PostgreSQL" loading="lazy" onerror="this.style.display='none'">PostgreSQL</span>
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/calendly" alt="API Calendly" loading="lazy" onerror="this.style.display='none'">API Calendly</span>
+                            </div>
+                        </div>
                         <a href="https://cyber-coach-expouno.onrender.com/" target="_blank" class="project-btn">Visitar proyecto</a>
                     </div>
                 </div>
@@ -807,6 +885,12 @@
                     <div class="project-body">
                         <h4>Las Pastillas del Nono</h4>
                         <p>Prototipo de diseño UI/UX realizado en Figma para un pastillero semanal inteligente. Permite configurar recordatorios de medicación de forma individual o asistida, donde un cuidador puede programar las notificaciones que recibe el paciente.</p>
+                        <div class="project-tech">
+                            <div class="project-tech-label">Tecnologías utilizadas</div>
+                            <div class="project-tech-list">
+                                <span class="project-tech-item"><img src="https://cdn.simpleicons.org/figma" alt="Figma" loading="lazy" onerror="this.style.display='none'">Figma</span>
+                            </div>
+                        </div>
                         <a href="https://www.figma.com/design/GB5Kj7RfTrquYNjDtBKCSN/APP-FINAL?node-id=0-1&p=f" target="_blank" class="project-btn project-btn-figma">Ver prototipo en Figma</a>
                     </div>
                 </div>
